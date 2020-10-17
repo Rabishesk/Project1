@@ -1,0 +1,28 @@
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+intgd=DETECT,gm;
+float  sx,sy,Wxmin,Wxmax,Wymin,Wymax,Vxmin,Vxmax,Vymin,Vymax,x1,x2,y1,y2,Xv1,Xv2,Yv1,Yv2;
+initgraph(&gd,&gm,"C:\\turboc3\\bgi ");
+cout<<"Coordinates of window (Xmin,Ymin,Xmax,Ymax): ";
+cin>>Wxmin>>Wymin>>Wxmax>>Wymax;
+rectangle(Wxmin,Wymin,Wxmax,Wymax);
+cout<<"Coordinates of Viewport (Xmin,Ymin,Xmax,Ymax): ";
+cin>>Vxmin>>Vymin>>Vxmax>>Vymax;
+rectangle(Vxmin,Vymin,Vxmax,Vymax); 
+cout<<"Coordinates of line(x1,y1,x2,y2):";
+cin>>x1>>y1>>x2>>y2;
+
+line(x1,y1,x2,y2);
+sx=(Vxmax-Vxmin)/(Wxmax-Wxmin);
+sy=(Vymax-Vymin)/(Wymax-Wymin);
+Xv1=sx*(x1-Wxmin)+Vxmin;
+Xv2=sx*(x2-Wxmin)+Vxmin;
+Yv1=sy*(y1-Wymin)+Vymin;
+Yv2=sy*(y2-Wymin)+Vymin;
+line(Xv1,Yv1,Xv2,Yv2);
+getch();
+closegraph();
+}
